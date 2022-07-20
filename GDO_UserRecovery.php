@@ -34,7 +34,7 @@ class GDO_UserRecovery extends GDO
 	 */
 	public function getUser()
 	{
-		return $this->getValue('pw_user_id');
+		return $this->gdoValue('pw_user_id');
 	}
 	
 	/**
