@@ -4,12 +4,12 @@ return array(
 'btn_recovery' => 'Forgot Password?',
 
 # Forgot?
-'ft_recovery_form' => 'Password Recovery',
+'mt_recovery_form' => 'Password Recovery',
 'msg_recovery_mail_sent' => 'We have sent you an E-Mail with instructions.',
 'err_email_or_login' => 'Please provide information on which account you would like to recover.',
 	
 # Change
-'ft_recovery_change' => 'Password Reset',
+'mt_recovery_change' => 'Password Reset',
 'new_password' => 'New Password',
 'p_recovery_change' => 'You may now choose a new password for your account.',
 'password_retype' => 'Retype it',
@@ -18,5 +18,5 @@ return array(
 ############################################################
 'mail_subj_recovery' => '[%s] Password Recovery',
 ############################################################
-'mdescr_recovery_form' => 'Reset Password',	
+'md_recovery_form' => 'Reset Password',	
 );

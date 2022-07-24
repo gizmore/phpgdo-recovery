@@ -3,7 +3,7 @@ namespace GDO\Recovery;
 
 use GDO\Core\GDO;
 use GDO\Core\GDT_CreatedAt;
-use GDO\DB\GDT_Token;
+use GDO\Core\GDT_Token;
 use GDO\User\GDT_User;
 use GDO\User\GDO_User;
 

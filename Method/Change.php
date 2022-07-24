@@ -11,6 +11,7 @@ use GDO\Crypto\GDT_Password;
 use GDO\Util\Common;
 use GDO\Crypto\BCrypt;
 use GDO\UI\GDT_Paragraph;
+use GDO\Core\GDT;
 use GDO\Core\GDT_String;
 
 final class Change extends MethodForm
@@ -41,7 +42,7 @@ final class Change extends MethodForm
 	
 	public function createForm(GDT_Form $form) : void
 	{
-		$this->title(t('ft_recovery_change', [sitename()]));
+		$this->title(t('mt_recovery_change', [sitename()]));
 		$form->addField(GDT_Paragraph::make()->text('p_recovery_change'));
 		$form->addField(GDT_Password::make('new_password')->label('new_password')->tooltip('tt_password_according_to_security_level'));
 		$retype = GDT_Password::make('password_retype')->label('password_retype')->tooltip('tt_password_retype');

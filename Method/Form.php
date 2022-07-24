@@ -14,6 +14,7 @@ use GDO\User\GDT_Username;
 use GDO\User\GDO_User;
 use GDO\Net\GDT_IP;
 use GDO\Mail\GDT_Email;
+use GDO\Core\GDT;
 use GDO\Core\GDT_Hook;
 use GDO\Core\GDT_Template;
 /**
