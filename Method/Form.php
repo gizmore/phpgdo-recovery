@@ -20,11 +20,13 @@ use GDO\Core\GDT_Template;
 /**
  * Request Password Forgotten Token.
  * Disabled when DEBUG_MAIL is on :)
+ * 
  * @author gizmore
  */
 final class Form extends MethodForm
 {
 	public function isUserRequired() : bool { return false; }
+	
 	public function isEnabled() : bool { return (!GDO_DEBUG_EMAIL) || (GDT_IP::isLocal()); }
 	
 	public function createForm(GDT_Form $form) : void
@@ -33,14 +35,17 @@ final class Form extends MethodForm
 		{
 			$form->addField(GDT_Username::make('login')->tooltip('tt_recovery_login'));
 		}
+		
 		if (Module_Recovery::instance()->cfgEmail())
 		{
 			$form->addField(GDT_Email::make('email')->tooltip('tt_recovery_email'));
 		}
+		
 		if (Module_Recovery::instance()->cfgCaptcha())
 		{
 			$form->addField(GDT_Captcha::make());
 		}
+		
 		$form->actions()->addField(GDT_Submit::make());
 		$form->addField(GDT_AntiCSRF::make());
 
