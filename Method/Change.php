@@ -20,7 +20,7 @@ use GDO\Core\GDT_String;
  */
 final class Change extends MethodForm
 {
-	private GDO_UserRecovery $token;
+	private ?GDO_UserRecovery $token;
 	
 	public function isUserRequired() : bool { return false; }
 	
