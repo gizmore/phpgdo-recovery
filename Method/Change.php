@@ -63,7 +63,7 @@ final class Change extends MethodForm
 	public function formValidated(GDT_Form $form)
 	{
 		$user = $this->token->getUser();
-		$user->saveVar('user_password', BCrypt::create($form->getFormVar('new_password'))->__toString());
+		$user->saveSettingVar('Login', 'password', BCrypt::create($form->getFormVar('new_password'))->__toString());
 		$this->token->delete();
 		return $this->message('msg_pass_changed');
 	}
