@@ -33,7 +33,7 @@ final class Form extends MethodForm
 	{
 		if (Module_Recovery::instance()->cfgLogin())
 		{
-			$form->addField(GDT_Username::make('login')->tooltip('tt_recovery_login'));
+			$form->addField(GDT_Username::make('login')->tooltip('tt_recovery_login')->max(128));
 		}
 		
 		elseif (Module_Recovery::instance()->cfgEmail())
