@@ -36,9 +36,14 @@ final class Form extends MethodForm
 			$form->addField(GDT_Username::make('login')->tooltip('tt_recovery_login'));
 		}
 		
-		if (Module_Recovery::instance()->cfgEmail())
+		elseif (Module_Recovery::instance()->cfgEmail())
 		{
 			$form->addField(GDT_Email::make('email')->tooltip('tt_recovery_email'));
+		}
+		
+		else
+		{
+			$this->error('err_no_recovery_option');
 		}
 		
 		if (Module_Recovery::instance()->cfgCaptcha())
