@@ -1,37 +1,38 @@
 <?php
 namespace GDO\Recovery\Method;
 
+use GDO\Core\GDT;
+use GDO\Core\GDT_String;
+use GDO\Crypto\BCrypt;
+use GDO\Crypto\GDT_Password;
 use GDO\Form\GDT_AntiCSRF;
 use GDO\Form\GDT_Form;
 use GDO\Form\GDT_Submit;
 use GDO\Form\GDT_Validator;
 use GDO\Form\MethodForm;
 use GDO\Recovery\GDO_UserRecovery;
-use GDO\Crypto\GDT_Password;
-use GDO\Crypto\BCrypt;
-use GDO\Core\GDT;
-use GDO\Core\GDT_String;
 
 /**
  * Change your password after receiving a token via mail.
- * 
- * @author gizmore
+ *
  * @version 7.0.1
+ * @author gizmore
  */
 final class Change extends MethodForm
 {
+
 	private ?GDO_UserRecovery $token;
-	
-	public function isUserRequired() : bool { return false; }
-	
-	public function gdoParameters() : array
+
+	public function isUserRequired(): bool { return false; }
+
+	public function gdoParameters(): array
 	{
 		return [
 			GDT_String::make('userid')->notNull(),
 			GDT_String::make('token')->notNull(),
 		];
 	}
-	
+
 	public function execute()
 	{
 		$userid = $this->gdoParameterVar('userid');
@@ -42,8 +43,8 @@ final class Change extends MethodForm
 		}
 		return parent::execute();
 	}
-	
-	public function createForm(GDT_Form $form) : void
+
+	public function createForm(GDT_Form $form): void
 	{
 		$this->title('mt_recovery_change', [sitename()]);
 		$form->text('p_recovery_change');
@@ -55,11 +56,6 @@ final class Change extends MethodForm
 		$form->addField(GDT_AntiCSRF::make());
 	}
 
-	public function validatePasswordEqual(GDT_Form $form, GDT_Password $gdt)
-	{
-		return $form->getFormVar('new_password') === $form->getFormVar('password_retype') ? true : $gdt->error('err_password_retype');
-	}
-	
 	public function formValidated(GDT_Form $form)
 	{
 		$user = $this->token->getUser();
@@ -68,9 +64,14 @@ final class Change extends MethodForm
 		return $this->message('msg_pass_changed');
 	}
 
-	public function renderPage() : GDT
+	public function renderPage(): GDT
 	{
 		return $this->templatePHP('change.php', ['form' => $this->getForm()]);
 	}
-	
+
+	public function validatePasswordEqual(GDT_Form $form, GDT_Password $gdt)
+	{
+		return $form->getFormVar('new_password') === $form->getFormVar('password_retype') ? true : $gdt->error('err_password_retype');
+	}
+
 }
