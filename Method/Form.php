@@ -29,7 +29,7 @@ final class Form extends MethodForm
 
 	public function isUserRequired(): bool { return false; }
 
-	public function isEnabled(): bool { return (!GDO_DEBUG_EMAIL) || (GDT_IP::isLocal()); }
+	public function isEnabled(): string { return (!GDO_DEBUG_EMAIL) || (GDT_IP::isLocal()); }
 
 	public function createForm(GDT_Form $form): void
 	{
@@ -59,7 +59,7 @@ final class Form extends MethodForm
 		GDT_Hook::callHook('RecoveryForm', $form);
 	}
 
-	public function formValidated(GDT_Form $form)
+	public function formValidated(GDT_Form $form): GDT
 	{
 		if (!($user = GDO_User::getByName($form->getFormVar('login'))))
 		{

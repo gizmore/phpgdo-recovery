@@ -33,7 +33,7 @@ final class Change extends MethodForm
 		];
 	}
 
-	public function execute()
+	public function execute(): GDT
 	{
 		$userid = $this->gdoParameterVar('userid');
 		$token = $this->gdoParameterVar('token');
@@ -56,7 +56,7 @@ final class Change extends MethodForm
 		$form->addField(GDT_AntiCSRF::make());
 	}
 
-	public function formValidated(GDT_Form $form)
+	public function formValidated(GDT_Form $form): GDT
 	{
 		$user = $this->token->getUser();
 		$user->saveSettingVar('Login', 'password', BCrypt::create($form->getFormVar('new_password'))->__toString());
