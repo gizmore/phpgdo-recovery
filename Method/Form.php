@@ -29,9 +29,9 @@ final class Form extends MethodForm
 
 	public function isUserRequired(): bool { return false; }
 
-	public function isEnabled(): string { return (!GDO_DEBUG_EMAIL) || (GDT_IP::isLocal()); }
+	public function isEnabled(): bool { return (!GDO_DEBUG_EMAIL) || (GDT_IP::isLocal()); }
 
-	public function createForm(GDT_Form $form): void
+	protected function createForm(GDT_Form $form): void
 	{
 		if (Module_Recovery::instance()->cfgLogin())
 		{

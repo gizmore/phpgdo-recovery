@@ -44,7 +44,7 @@ final class Change extends MethodForm
 		return parent::execute();
 	}
 
-	public function createForm(GDT_Form $form): void
+	protected function createForm(GDT_Form $form): void
 	{
 		$this->title('mt_recovery_change', [sitename()]);
 		$form->text('p_recovery_change');
