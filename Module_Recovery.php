@@ -45,7 +45,11 @@ class Module_Recovery extends GDO_Module
 
 	public function cfgEmail(): bool { return $this->getConfigValue('recovery_email'); }
 
-	public function cfgCaptcha(): bool { return $this->getConfigValue('recovery_captcha'); }
+	public function cfgCaptcha(): bool
+    {
+        return $this->getConfigValue('recovery_captcha') &&
+            module_enabled('Captcha');
+    }
 
 	public function cfgTimeout(): int { return $this->getConfigValue('recovery_timeout'); }
 
