@@ -37,25 +37,20 @@ final class Form extends MethodForm
 		{
 			$form->addField(GDT_Username::make('login')->tooltip('tt_recovery_login')->max(128));
 		}
-
-		elseif (Module_Recovery::instance()->cfgEmail())
+		if (Module_Recovery::instance()->cfgEmail())
 		{
 			$form->addField(GDT_Email::make('email')->tooltip('tt_recovery_email'));
 		}
-
-		else
+        if (!Module_Recovery::instance()->cfgLogin() && !Module_Recovery::instance()->cfgEmail())
 		{
 			$this->error('err_no_recovery_option');
 		}
-
 		if (Module_Recovery::instance()->cfgCaptcha())
 		{
 			$form->addField(GDT_Captcha::make());
 		}
-
 		$form->actions()->addField(GDT_Submit::make());
 		$form->addField(GDT_AntiCSRF::make());
-
 		GDT_Hook::callHook('RecoveryForm', $form);
 	}
 
