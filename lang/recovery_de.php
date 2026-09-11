@@ -21,5 +21,5 @@ return [
 	'mail_subj_recovery' => '[%s] Passwort ändern',
 
 	'md_recovery_form' => 'Passwort zurücksetzen',
-	'err_recovery_needs_a_mail' => '%s\'s account cannot reset their password because it has no mail.',
+	'err_recovery_needs_a_mail' => 'Das Konto von %s kann sein Passwort nicht zurücksetzen, weil keine E-Mail-Adresse hinterlegt ist.',
 ];
